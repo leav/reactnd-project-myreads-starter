@@ -6,6 +6,7 @@ const ShelfType = {
 };
 
 ShelfType.all = [ShelfType.currentlyReading, ShelfType.wantToRead, ShelfType.read, ShelfType.none];
+ShelfType.displayed = [ShelfType.currentlyReading, ShelfType.wantToRead, ShelfType.read]
 ShelfType.getName = (id) => ShelfType.all.find(shelfType => shelfType.id === id).name;
 
 export default ShelfType;

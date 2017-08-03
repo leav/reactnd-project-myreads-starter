@@ -3,6 +3,7 @@ import './App.css'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from "./BookShelf";
 import ShelfType from "./ShelfType"
+import sortBy from "sort-by"
 
 class BooksApp extends React.Component {
   state = {
@@ -27,7 +28,9 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       console.log(books);
-      this.setState({books});
+      this.setState({
+        books: books.sort(sortBy('title'))
+      });
     });
   }
 
@@ -39,7 +42,7 @@ class BooksApp extends React.Component {
             <h1>MyReads</h1>
           </div>
           {
-            ShelfType.all.map(shelfType => <BookShelf
+            ShelfType.displayed.map(shelfType => <BookShelf
               key={shelfType.id}
               title={shelfType.name}
               books={this.state.books.filter(book =>
@@ -48,6 +51,9 @@ class BooksApp extends React.Component {
               onUpdateBookShelf={this.updateBookShelf}
             />)
           }
+          <div className="open-search">
+            <a onClick={() => this.setState({showSearchPage: true})}>Add a book</a>
+          </div>
         </div>
 
         {this.state.showSearchPage ? (
@@ -254,9 +260,6 @@ class BooksApp extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({showSearchPage: true})}>Add a book</a>
             </div>
           </div>
         )}
