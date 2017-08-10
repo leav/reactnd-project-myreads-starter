@@ -20,5 +20,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://leav.github.io/reactnd-project-myreads-starter"
+  "homepage": "https://leav.github.io/reactnd-project-myreads-starter/"
 }
