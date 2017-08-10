@@ -2,9 +2,12 @@ import PropTypes from "prop-types"
 import React from "react"
 import BookSummary from "./BookSummary";
 
-function BookShelf({books, title, onUpdateBookShelf}) {
+function BookShelf({title, books, shouldDisplayWhenEmpty, onUpdateBookShelf}) {
+  if (!shouldDisplayWhenEmpty && (!books || books.length === 0)) {
+    return null;
+  }
   return <div className="bookshelf">
-    <h2 className="bookshelf-title">{title}</h2>
+    {title && <h2 className="bookshelf-title">{title}</h2>}
     <div className="bookshelf-books">
       <ol className="books-grid">
         {books.map(book => <li key={book.id}>
@@ -16,8 +19,10 @@ function BookShelf({books, title, onUpdateBookShelf}) {
 }
 
 BookShelf.PropTypes = {
+  title: PropTypes.string,
   books: PropTypes.array,
-  title: PropTypes.string
+  shouldDisplayWhenEmpty: PropTypes.bool,
+  onUpdateBookShelf: PropTypes.func.isRequired
 };
 
 export default BookShelf;
