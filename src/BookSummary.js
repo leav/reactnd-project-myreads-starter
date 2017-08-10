@@ -7,7 +7,7 @@ function BookSummary({book, onUpdateBookShelf}) {
     <div className="book-top">
       {book.imageLinks && book.imageLinks.thumbnail &&
       <div className="book-cover" style={
-        {width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")`}
+        {width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail.replace(/^http:\/\//i, 'https://')}")`}
       }/>
       }
       <div className="book-shelf-changer">
