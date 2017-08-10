@@ -65,6 +65,7 @@ class BookSearch extends React.Component {
             <input type="text"
                    placeholder="Search by title or author"
                    value={this.props.query}
+                   autoFocus
                    onChange={(event) => this.updateQuery(event.target.value)}
             />
           </div>

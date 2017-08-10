@@ -38,7 +38,7 @@ class BookList extends React.Component {
           books={this.state.books.filter(book =>
             book.shelf === shelfType.id
           )}
-          shouldDisplayWhenEmpty="true"
+          shouldDisplayWhenEmpty
           onUpdateBookShelf={this.updateBookShelf}
         />)
       }
